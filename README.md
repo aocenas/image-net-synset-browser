@@ -16,7 +16,7 @@ If you want to use some other local DB, just put connection info into `src/db.js
 
 
 ### Load data
-`npm run loadData`
+```npm run loadData```
 
 
 ### Start server
