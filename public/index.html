@@ -31,11 +31,20 @@
             display: flex;
         }
 
+        @keyframes spinner {
+            to {transform: rotate(360deg);}
+        }
+
+        .spinner {
+            animation: spinner .6s linear infinite;
+        }
+
     </style>
 </head>
 <body class="section">
     <h1 class="title">Image net</h1>
-    <div id="app-root"></div>
+    <div id="app-root">
+    </div>
     <script src="/main.js"></script>
 </body>
 </html>

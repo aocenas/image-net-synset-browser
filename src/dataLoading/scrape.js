@@ -4,7 +4,10 @@ const axios = require('axios')
 const parseString = require('xml2js').parseString
 const { promisify } = require('./utils')
 
-
+/**
+ * Loads data from image-net.org as xml and returning them as js object. Also caches the data in data directory.
+ * @returns {Promise.<*>}
+ */
 module.exports = async function loadXml () {
     let imageNetData
     try {

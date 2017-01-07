@@ -1,7 +1,12 @@
+/**
+ * Flatten the tree of synsets into one dimensional list of nodes.
+ * @param synsets - Array of synset objects
+ * @param synsetPrefix - Label prefix to use, basically a path of labels that gets you to current synset
+ * @param wnidPrefix - Same as synsetPrefix, but instead of labels, it uses wnids
+ * @returns {Array}
+ */
 function synsetSimple (synsets, synsetPrefix, wnidPrefix) {
-    let accumulator = []
-
-    synsets.forEach(synset => {
+    return synsets.reduce((rows, synset) => {
         const newSynsetPrefix = synsetPrefix ? `${synsetPrefix} > ${synset['$'].words}`: synset['$'].words
         // names and also wnids are not unique so we also need wnid path, which can be used as id
         const newWnidPrefix = wnidPrefix ? `${wnidPrefix}.${synset['$'].wnid}`: synset['$'].wnid
@@ -11,7 +16,7 @@ function synsetSimple (synsets, synsetPrefix, wnidPrefix) {
         if (synset.synset) {
             let children = synsetSimple(synset.synset, newSynsetPrefix, newWnidPrefix)
             size = children.length
-            accumulator = accumulator.concat(children)
+            rows = rows.concat(children)
         }
 
         let row = {
@@ -20,10 +25,9 @@ function synsetSimple (synsets, synsetPrefix, wnidPrefix) {
             label: synset['$'].words,
             size
         }
-        accumulator.push(row)
-    })
-
-    return accumulator
+        rows.push(row)
+        return rows
+    }, [])
 }
 
 module.exports = function transform (imageNet) {

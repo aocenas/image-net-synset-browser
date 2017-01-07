@@ -5,6 +5,7 @@ const app = express()
 
 const rootWnid = 'fall11'
 
+// Returns whole synset tree as one json
 app.get('/data', (req, res) => {
     (async function inner() {
         const rows = await db.select('*').from('image_net').orderBy('wnid')
@@ -26,6 +27,7 @@ app.get('/data', (req, res) => {
     })()
 })
 
+// Returns wnid paths of nodes that contain searched string
 app.get('/search', async (req, res) => {
     const rows = await db.select('wnid')
         .from('image_net')
