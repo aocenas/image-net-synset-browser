@@ -1,0 +1,39 @@
+{
+  "name": "scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --ignore public/ --ignore src/ build/server",
+    "build": "babel src -d build",
+    "watch": "babel src -w -d build",
+    "browserify": "browserify ./src/app/main.js -o public/main.js -t babelify -d",
+    "watchify": "watchify ./src/app/main.js -o public/main.js -t babelify -d -v"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "browserify": "^13.3.0",
+    "regenerator": "^0.9.5",
+    "watchify": "^3.8.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "babel-polyfill": "^6.20.0",
+    "classnames": "^2.2.5",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0",
+    "pg": "^6.1.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "regenerator": "^0.9.5",
+    "xml2js": "^0.4.17"
+  }
+}

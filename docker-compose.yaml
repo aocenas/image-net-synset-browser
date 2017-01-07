@@ -1,0 +1,12 @@
+version: "2"
+services:
+  postgres:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: operam
+      POSTGRES_PASSWORD: operam
+    volumes:
+      - ./table.sql:/docker-entrypoint-initdb.d/table.sql
+
